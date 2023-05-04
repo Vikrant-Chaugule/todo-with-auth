@@ -21,6 +21,7 @@ export const Login: React.FC = () => {
 
   return (
     <div className="login-container">
+      <h2>Log in to your account</h2>
       <input
         name="userName"
         type="text"
@@ -37,7 +38,7 @@ export const Login: React.FC = () => {
       />
       <button onClick={onClickLogin}>Login</button>
       <Link className="sign-up-link" to="/signup">
-        Not Registered? Sign Up here
+        Don't have an account? Sign Up
       </Link>
     </div>
   );

@@ -1,0 +1,20 @@
+.todo-item-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid grey;
+}
+
+.title-container {
+  display: flex;
+}
+
+.title {
+  margin-left: 10px;
+}
+
+.title-with-strike-through {
+  margin-left: 10px;
+
+  text-decoration: line-through;
+}

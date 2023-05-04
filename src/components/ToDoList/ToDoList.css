@@ -1,0 +1,24 @@
+.todo-list-container {
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  height: 100vh;
+}
+
+.add-todo-container {
+  display: flex;
+}
+
+.add-todo-container input {
+  resize: none;
+  width: 90%;
+  padding: 10px;
+  margin: auto;
+}
+
+.add-todo-container button {
+  padding: 5px 15px;
+}
+
+.list-container {
+  margin-top: 50px;
+}
