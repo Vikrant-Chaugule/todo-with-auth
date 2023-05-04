@@ -15,7 +15,8 @@ export const Login: React.FC = () => {
   };
 
   const onClickLogin = () => {
-    navigate("/dash");
+    console.log(userName, password);
+    navigate("/");
   };
 
   return (
