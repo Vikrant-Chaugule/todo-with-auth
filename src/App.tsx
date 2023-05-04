@@ -12,7 +12,7 @@ function App() {
     id: "",
     title: "",
     isCompleted: false,
-    hasChildren: false,
+    children: [],
   });
 
   return (

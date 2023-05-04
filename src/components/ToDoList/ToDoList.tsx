@@ -13,7 +13,7 @@ export const ToDoList = () => {
     tasks.push({
       id: uuidv4(),
       title: toDoTitle,
-      hasChildren: false,
+      children: [],
       isCompleted: false,
     });
     setToDos(tasks);

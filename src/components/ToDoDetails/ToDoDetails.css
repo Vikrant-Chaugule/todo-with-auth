@@ -2,3 +2,12 @@
   display: flex;
   flex-direction: column;
 }
+
+.title {
+  margin-left: 10px;
+}
+
+.title-with-strike-through {
+  margin-left: 10px;
+  text-decoration: line-through;
+}

@@ -17,7 +17,7 @@ export const ToDoContext = createContext<ToDoContextType>({
     id: "",
     title: "",
     isCompleted: false,
-    hasChildren: false,
+    children: [],
   },
   setSelectedTodo: () => {},
 });
