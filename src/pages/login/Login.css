@@ -1,0 +1,24 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 360px;
+  padding: 20px;
+  margin: 10% auto;
+  text-align: center;
+  border: 1px solid grey;
+}
+
+.login-container input {
+  margin: 20px;
+  padding: 10px;
+}
+
+.login-container button {
+  padding: 10px;
+  margin: 20px;
+}
+
+.sign-up-link {
+  color: white;
+}
