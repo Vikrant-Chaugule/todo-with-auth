@@ -28,7 +28,6 @@ export const ToDoItem = ({
       ...updatedToDos[index],
       isCompleted: !updatedToDos[index]?.isCompleted,
     };
-    // console.log("selectedTodo", selectedTodo);
     setToDos(updatedToDos);
 
     if (selectedTodo.id === id) {
@@ -38,7 +37,6 @@ export const ToDoItem = ({
 
   const onDeleteToDo = (id: string) => {
     const updatedToDos = toDos?.filter((toDo) => toDo.id !== id);
-    // console.log("selectedTodo", selectedTodo);
     setToDos(updatedToDos);
 
     if (selectedTodo.id === id) {
@@ -56,7 +54,6 @@ export const ToDoItem = ({
       isCompleted: false,
     });
     setToDos(updatedToDos);
-    // console.log("selectedTodo", selectedTodo);
     if (selectedTodo.id === id) {
       setSelectedTodo(updatedToDos[index]);
     }
@@ -75,7 +72,6 @@ export const ToDoItem = ({
     if (selectedTodo.id === id) {
       setSelectedTodo(updatedToDos[index]);
     }
-    // console.log("selectedTodo", selectedTodo);
   };
 
   const onDeleteChildCheckbox = (subTaskId: string) => {
@@ -85,7 +81,6 @@ export const ToDoItem = ({
       (ele) => ele.id !== subTaskId
     );
     setToDos(updatedToDos);
-    // console.log("selectedTodo", selectedTodo);
     if (selectedTodo.id === id) {
       setSelectedTodo(updatedToDos[index]);
     }

@@ -9,8 +9,6 @@ export const ToDoDetails = () => {
 
   const titleStyle = isCompleted ? "title-with-strike-through " : "title";
 
-  console.log(selectedTodo);
-
   return (
     <div className="todo-details-container">
       <h1>Todo Details</h1>

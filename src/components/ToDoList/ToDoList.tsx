@@ -46,9 +46,18 @@ export const ToDoList = () => {
             <ToDoItem key={index} {...todo} />
           ))
         ) : (
-          <span>Add your Tasks</span>
+          <NoToDoTasks />
         )}
       </div>
+    </div>
+  );
+};
+
+const NoToDoTasks = () => {
+  return (
+    <div style={{ width: "300px", textAlign: "center" }}>
+      <h1>Looks like you don't have any tasks pending right Now.</h1>
+      <h1> Good work!!</h1>
     </div>
   );
 };
