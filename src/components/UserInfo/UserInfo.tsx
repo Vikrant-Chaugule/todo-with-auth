@@ -16,7 +16,7 @@ import { ToDoContext } from "../../context/ToDoContext";
 
 export const UserInfo = () => {
   const { authUser, setAuthUser, logout } = useContext(AuthContext);
-  const { toDos } = useContext(ToDoContext);
+  const { toDos, setToDos, setSelectedTodo } = useContext(ToDoContext);
 
   const navigate = useNavigate();
 
@@ -24,6 +24,8 @@ export const UserInfo = () => {
     logoutUser();
     logout();
     setAuthUser({});
+    setSelectedTodo({});
+    setToDos([]);
     navigate("/login");
   };
 

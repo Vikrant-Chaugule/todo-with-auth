@@ -167,6 +167,8 @@ const Item = ({
   setShowPopup,
 }: ItemProps) => {
   const { toDos, setSelectedTodo } = useContext(ToDoContext);
+  const [deletePopup, setDeletePopup] = useState<boolean>(false);
+
   const titleStyle = isCompleted ? "title-with-strike-through " : "title";
 
   const onSeeDetails = () => {
@@ -196,16 +198,29 @@ const Item = ({
         </div>
       </div>
       <div>
+        <button className="confirm-delete" onClick={() => setDeletePopup(true)}>
+          Delete
+        </button>
         <Popup
-          trigger={() => <button className="delete-btn">Delete</button>}
+          open={deletePopup}
+          onClose={() => setDeletePopup(false)}
           position="bottom left"
           closeOnDocumentClick
         >
-          Are you sure?
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <button className="confirm-delete" onClick={() => onDeleteToDo(id)}>
-              Delete
-            </button>
+          <div>
+            Are you sure that you want to delete this task?
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <button
+                className="confirm-delete"
+                style={{ marginTop: "25px" }}
+                onClick={() => {
+                  onDeleteToDo(id);
+                  setDeletePopup(false);
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </Popup>
 
