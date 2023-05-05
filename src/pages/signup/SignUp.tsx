@@ -3,7 +3,6 @@ import "../login/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext, AuthContextProps } from "../../context/AuthContext";
 import { signUpUser } from "../../services/authService";
-import { redirect } from "react-router-dom";
 
 type FormErrors = {
   username?: string;
