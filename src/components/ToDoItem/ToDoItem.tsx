@@ -3,6 +3,9 @@ import { ToDoContext } from "../../context/ToDoContext";
 import "./ToDoItem.css";
 import { SubTaskPopup } from "../SubTaskPopup/SubTaskPopup";
 import { v4 as uuidv4 } from "uuid";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faTrowelBricks } from "@fortawesome/free-solid-svg-icons";
 
 export type ToDoItemProps = {
   id: string;
@@ -28,6 +31,16 @@ export const ToDoItem = ({
       ...updatedToDos[index],
       isCompleted: !updatedToDos[index]?.isCompleted,
     };
+
+    // if parent task is done then subtasks are also done
+    if (updatedToDos[index]?.children?.length) {
+      updatedToDos[index].children = updatedToDos[index]?.children?.map(
+        (ele) => ({
+          ...ele,
+          isCompleted: updatedToDos[index]?.isCompleted,
+        })
+      );
+    }
     setToDos(updatedToDos);
 
     if (selectedTodo.id === id) {
@@ -62,11 +75,17 @@ export const ToDoItem = ({
   const onChangeChildCheckbox = (subTaskId: string) => {
     const updatedToDos = [...toDos];
     const index = updatedToDos.findIndex((toDo) => toDo.id === id);
+    let allChildrenChecked = true;
     updatedToDos[index].children = updatedToDos[index].children.map((ele) => {
+      let child = { ...ele };
       if (ele.id === subTaskId)
-        return { ...ele, isCompleted: !ele.isCompleted };
-      else return ele;
+        child = { ...ele, isCompleted: !ele.isCompleted };
+
+      if (!child.isCompleted) allChildrenChecked = false;
+      return child;
     });
+
+    updatedToDos[index].isCompleted = allChildrenChecked;
 
     setToDos(updatedToDos);
     if (selectedTodo.id === id) {
@@ -154,12 +173,6 @@ const Item = ({
     if (showSubTaskBtn) {
       const todo = toDos.find((ele) => ele.id === id);
       setSelectedTodo(todo);
-      // setSelectedTodo({
-      //   id,
-      //   title,
-      //   isCompleted,
-      //   children,
-      // });
     }
   };
 
@@ -174,12 +187,21 @@ const Item = ({
         />
         <div className={titleStyle} onClick={onSeeDetails}>
           {title}
+          {children.length > 0 ? (
+            <span style={{ marginLeft: "10px" }}>
+              <FontAwesomeIcon icon={faTrowelBricks} />
+            </span>
+          ) : null}
         </div>
       </div>
       <div>
-        <button onClick={() => onDeleteToDo(id)}>Delete</button>
+        <button className="delete-btn" onClick={() => onDeleteToDo(id)}>
+          Delete
+        </button>
         {showSubTaskBtn ? (
-          <button onClick={() => setShowPopup(true)}>Add Sub Task</button>
+          <button className="delete-btn" onClick={() => setShowPopup(true)}>
+            Add Sub Task
+          </button>
         ) : null}
         <SubTaskPopup
           parentId={id}

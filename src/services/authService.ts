@@ -24,4 +24,6 @@ export const signUpUser = (userName: string, password: string) => {
   return newUser;
 };
 
-export const logoutUser = (userName: string) => {};
+export const logoutUser = () => {
+  localStorage.removeItem("token");
+};
