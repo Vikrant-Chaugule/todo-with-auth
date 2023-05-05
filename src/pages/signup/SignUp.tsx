@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "../login/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext, AuthContextProps } from "../../context/AuthContext";
-import { loginUser, signUpUser } from "../../services/authService";
+import { signUpUser } from "../../services/authService";
 
 type FormErrors = {
   username?: string;

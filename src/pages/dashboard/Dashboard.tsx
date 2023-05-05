@@ -7,20 +7,12 @@ import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
 export const Dashboard = () => {
-  const { token, isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (token === "" || !token) {
-  //     navigate("/login");
-  //   }
-  // }, [token]);
-
   useEffect(() => {
-    console.log("Dashboard", isAuthenticated);
-
     if (!isAuthenticated) navigate("/login");
-  }, []);
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="dashboard-page">

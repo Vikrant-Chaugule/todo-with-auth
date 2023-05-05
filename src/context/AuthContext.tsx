@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export type AuthContextProps = {
   authUser: any;
@@ -17,8 +17,6 @@ export const AuthContextProvider = ({ children }: any) => {
     const token = localStorage.getItem("token");
     return token !== null;
   });
-
-  console.log({ isAuthenticated });
 
   const login = () => setIsAuthenticated(true);
   const logout = () => setIsAuthenticated(false);
