@@ -7,13 +7,19 @@ import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
 export const Dashboard = () => {
-  const { token } = useContext(AuthContext);
+  const { token, isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   if (token === "" || !token) {
+  //     navigate("/login");
+  //   }
+  // }, [token]);
+
   useEffect(() => {
-    if (token === "" || !token) {
-      navigate("/login");
-    }
+    console.log("Dashboard", isAuthenticated);
+
+    if (!isAuthenticated) navigate("/login");
   }, []);
 
   return (

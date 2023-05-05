@@ -7,7 +7,7 @@ import { loginUser } from "../../services/authService";
 export const Login: React.FC = () => {
   const [userName, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { setToken, setAuthUser } = useContext<AuthContextProps>(AuthContext);
+  const { setAuthUser, login } = useContext<AuthContextProps>(AuthContext);
   const [error, setError] = useState<string>("");
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export const Login: React.FC = () => {
     if (user instanceof Error) {
       setError(user.message);
     } else {
-      setToken("VERY_SECURED_TOKEN");
+      login();
       setAuthUser(user);
       navigate("/");
     }

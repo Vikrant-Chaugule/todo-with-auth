@@ -16,7 +16,7 @@ export const SignUp: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [errors, setErrors] = useState<FormErrors>({});
 
-  const { setToken } = useContext<AuthContextProps>(AuthContext);
+  const { login } = useContext<AuthContextProps>(AuthContext);
   const [error, setError] = useState<string>("");
   const navigate = useNavigate();
 
@@ -58,7 +58,7 @@ export const SignUp: React.FC = () => {
       if (isValid instanceof Error) {
         setError("User name already exists! Please try a different one.");
       } else {
-        setToken("VERY_SECURED_TOKEN");
+        login();
         navigate("/");
       }
     }

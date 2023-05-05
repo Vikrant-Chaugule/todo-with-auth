@@ -6,6 +6,9 @@ export const loginUser = (userName: string, password: string) => {
     (usr) => usr.userName === userName && usr.password === password
   );
   if (!user) return new Error("No account found!");
+
+  // token from API
+  localStorage.setItem("token", "VERY_SECURED_TOKEN");
   return user;
 };
 

@@ -1,25 +1,38 @@
 import { createContext, useContext, useState } from "react";
 
 export type AuthContextProps = {
-  token: string;
-  setToken: any;
   authUser: any;
   setAuthUser: any;
+  login: any;
 };
 
-export const AuthContext = createContext<AuthContextProps>({
-  token: "",
-  setToken: () => {},
+export const AuthContext = createContext<any>({
   authUser: {},
   setAuthUser: () => {},
 });
 
 export const AuthContextProvider = ({ children }: any) => {
-  const [token, setToken] = useState<string>("");
   const [authUser, setAuthUser] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const token = localStorage.getItem("token");
+    return token !== null;
+  });
+
+  console.log({ isAuthenticated });
+
+  const login = () => setIsAuthenticated(true);
+  const logout = () => setIsAuthenticated(false);
 
   return (
-    <AuthContext.Provider value={{ token, setToken, authUser, setAuthUser }}>
+    <AuthContext.Provider
+      value={{
+        authUser,
+        setAuthUser,
+        isAuthenticated,
+        login,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

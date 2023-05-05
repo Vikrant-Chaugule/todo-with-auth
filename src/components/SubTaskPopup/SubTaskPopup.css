@@ -1,14 +1,14 @@
 .popup-content {
   margin: auto;
   background: rgb(255, 255, 255);
-  width: 20%;
+  /* width: 20%; */
   padding: 10px;
   border-radius: 10px;
 
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 12%;
+  /* height: 12%; */
 }
 
 .popup-container input {
