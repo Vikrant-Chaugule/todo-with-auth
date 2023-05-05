@@ -1,8 +1,6 @@
 import { createContext, useState } from "react";
 import { ToDoItemProps } from "../components/ToDoItem/ToDoItem";
 
-//TODO: replace function types
-
 type ToDoContextType = {
   toDos: ToDoItemProps[];
   setToDos: any;
@@ -12,7 +10,7 @@ type ToDoContextType = {
 
 export const ToDoContext = createContext<ToDoContextType>({
   toDos: [],
-  setToDos: () => {},
+  setToDos: (tasks: any) => {},
   selectedTodo: {
     id: "",
     title: "",

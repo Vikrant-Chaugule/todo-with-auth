@@ -34,7 +34,7 @@ export const UserInfo = () => {
 
   return (
     <div className="user-info-container ">
-      <h1>Hey {authUser?.userName}</h1>
+      <h1>Hey, {authUser?.userName}</h1>
 
       <div>
         <IconWithText
@@ -76,7 +76,13 @@ export const UserInfo = () => {
   );
 };
 
-const IconWithText = ({ label, icon, color }: any) => {
+type IconWithTextProps = {
+  label: string;
+  icon: any;
+  color: string;
+};
+
+const IconWithText = ({ label, icon, color }: IconWithTextProps) => {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
       <FontAwesomeIcon icon={icon} color={color} />

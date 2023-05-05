@@ -3,6 +3,7 @@ import "../login/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext, AuthContextProps } from "../../context/AuthContext";
 import { signUpUser } from "../../services/authService";
+import { redirect } from "react-router-dom";
 
 type FormErrors = {
   username?: string;
@@ -51,15 +52,13 @@ export const SignUp: React.FC = () => {
     e.preventDefault();
     setErrors({});
 
-    console.log("VALID", validateUserForm());
     if (validateUserForm()) {
       const isValid = signUpUser(userName, password);
-      console.log({ isValid });
       if (isValid instanceof Error) {
         setError("User name already exists! Please try a different one.");
       } else {
         login();
-        navigate("/");
+        navigate("/login");
       }
     }
   };

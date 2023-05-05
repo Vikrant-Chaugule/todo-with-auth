@@ -29,3 +29,12 @@
   border-radius: 5px;
   margin-right: 10px;
 }
+
+.confirm-delete {
+  background-color: #de4c4a;
+  color: white;
+  padding: 0px 12px;
+  line-height: 32px;
+  border-radius: 5px;
+  margin-right: 10px;
+}

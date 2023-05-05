@@ -4,7 +4,7 @@ import "./ToDoItem.css";
 import { SubTaskPopup } from "../SubTaskPopup/SubTaskPopup";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import Popup from "reactjs-popup";
 import { faTrowelBricks } from "@fortawesome/free-solid-svg-icons";
 
 export type ToDoItemProps = {
@@ -142,13 +142,13 @@ export const ToDoItem = ({
 };
 
 type ItemProps = {
-  onChangeCheckbox: any;
+  onChangeCheckbox: (id: string) => void;
   showSubTaskBtn?: boolean;
   isCompleted: boolean;
   id: string;
   title: string;
   children: ToDoItemProps[];
-  onDeleteToDo: any;
+  onDeleteToDo: (id: string) => void;
   onAddSubTask?: any;
   showPopup?: boolean;
   setShowPopup?: any;
@@ -180,6 +180,7 @@ const Item = ({
     <div className="todo-item-container">
       <div className="title-container">
         <input
+          style={{ borderRadius: "10px" }}
           type="checkbox"
           onChange={() => onChangeCheckbox(id)}
           checked={isCompleted}
@@ -195,11 +196,28 @@ const Item = ({
         </div>
       </div>
       <div>
-        <button className="delete-btn" onClick={() => onDeleteToDo(id)}>
-          Delete
-        </button>
+        <Popup
+          trigger={() => <button className="delete-btn">Delete</button>}
+          position="bottom left"
+          closeOnDocumentClick
+        >
+          Are you sure?
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <button className="confirm-delete" onClick={() => onDeleteToDo(id)}>
+              Delete
+            </button>
+          </div>
+        </Popup>
+
         {showSubTaskBtn ? (
-          <button className="delete-btn" onClick={() => setShowPopup(true)}>
+          <button
+            className="delete-btn"
+            style={
+              isCompleted ? { background: "grey", cursor: "not-allowed" } : {}
+            }
+            onClick={() => setShowPopup(true)}
+            disabled={isCompleted}
+          >
             Add Sub Task
           </button>
         ) : null}

@@ -34,7 +34,7 @@ export const ToDoDetails = () => {
           </div>
         ) : (
           <div style={{ margin: "auto" }}>
-            <h3>Click task title to see the details</h3>
+            <h3>Click task title to see its details</h3>
           </div>
         )}
       </div>

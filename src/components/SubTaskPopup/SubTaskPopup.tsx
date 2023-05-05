@@ -5,9 +5,9 @@ import "./SubTaskPopup.css";
 
 type SubTaskPopupProps = {
   parentId: string;
-  onAddSubTask: any;
+  onAddSubTask: (id: string, title: string) => void;
   showPopup: boolean;
-  closePopup: any;
+  closePopup: () => void;
 };
 
 export const SubTaskPopup = ({

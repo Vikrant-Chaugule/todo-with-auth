@@ -18,8 +18,7 @@ export const Login: React.FC = () => {
     else if (name === "password") setPassword(value);
   };
 
-  const onClickLogin = (e: React.FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const verifyUser = () => {
     const user = loginUser(userName, password);
     if (user instanceof Error) {
       setError(user.message);
@@ -27,6 +26,17 @@ export const Login: React.FC = () => {
       login();
       setAuthUser(user);
       navigate("/");
+    }
+  };
+
+  const onClickLogin = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    verifyUser();
+  };
+
+  const onHitEnter = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      verifyUser();
     }
   };
 
@@ -47,6 +57,7 @@ export const Login: React.FC = () => {
         onChange={onChangeInput}
         type="password"
         placeholder="Password"
+        onKeyUp={onHitEnter}
       />
       <button onClick={onClickLogin} disabled={!(userName && password)}>
         Login

@@ -24,7 +24,7 @@ export const ToDoList = () => {
     setToDoTitle(e.currentTarget.value);
 
   const onHitEnter = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && toDoTitle) {
       onClickAdd();
     }
   };
@@ -34,7 +34,7 @@ export const ToDoList = () => {
       <h1>My Todo</h1>
       <div className="add-todo-container">
         <input
-          placeholder="Add Tasks to My Todo"
+          placeholder="Add tasks"
           value={toDoTitle}
           onChange={onChangeToDoTitle}
           onKeyUp={onHitEnter}
@@ -56,7 +56,7 @@ export const ToDoList = () => {
 const NoToDoTasks = () => {
   return (
     <div style={{ width: "300px", textAlign: "center", margin: "25% auto" }}>
-      <h1>Looks like you don't have any tasks pending right Now.</h1>
+      <h1>Looks like you don't have any tasks pending right now.</h1>
       <h1> Good work!!</h1>
     </div>
   );
