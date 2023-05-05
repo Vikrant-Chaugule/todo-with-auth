@@ -55,7 +55,7 @@ export const ToDoList = () => {
 
 const NoToDoTasks = () => {
   return (
-    <div style={{ width: "300px", textAlign: "center" }}>
+    <div style={{ width: "300px", textAlign: "center", margin: "25% auto" }}>
       <h1>Looks like you don't have any tasks pending right Now.</h1>
       <h1> Good work!!</h1>
     </div>

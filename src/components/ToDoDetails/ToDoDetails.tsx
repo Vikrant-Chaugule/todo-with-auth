@@ -33,7 +33,9 @@ export const ToDoDetails = () => {
             </ul>
           </div>
         ) : (
-          <span>Click task title to see the details</span>
+          <div style={{ margin: "auto" }}>
+            <h3>Click task title to see the details</h3>
+          </div>
         )}
       </div>
     </div>
